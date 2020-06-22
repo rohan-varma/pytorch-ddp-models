@@ -16,12 +16,6 @@ def setup(rank, world_size):
     # initialize the process group
     dist.init_process_group("gloo", rank=rank, world_size=world_size)
 
-    # Explicitly setting seed to make sure that models created in two processes
-    # start from same random weights and biases.
-    torch.manual_seed(42)
-    print("initialized process group")
-
-
 class ToyModel(nn.Module):
     def __init__(self):
         super(ToyModel, self).__init__()

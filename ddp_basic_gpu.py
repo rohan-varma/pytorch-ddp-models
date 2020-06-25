@@ -32,7 +32,6 @@ def demo_basic(rank, world_size):
     torch.cuda.set_device(rank)
     model = ToyModel().to(torch.cuda.current_device())
     ddp_model = DDP(model, device_ids=[torch.cuda.current_device()])
-    print('created ddp model')
     loss_fn = nn.MSELoss()
     optimizer = optim.SGD(ddp_model.parameters(), lr=0.001)
 
